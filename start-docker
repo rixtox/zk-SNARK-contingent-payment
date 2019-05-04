@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
+
+docker build -t zksnark "${SCRIPT_DIR}"
+docker run --rm -it --cap-add=SYS_PTRACE -v "${SCRIPT_DIR}:/project" -w /project zksnark bash
